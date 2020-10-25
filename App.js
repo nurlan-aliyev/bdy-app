@@ -1,21 +1,56 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { Easing } from "react-native";
+
+import { NavigationContainer } from "@react-navigation/native";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from "@react-navigation/stack";
+
+import LoginScreen from "./Screens/LoginScreen.js";
+import RegisterScreen from "./Screens/RegisterScreen.js";
+import RecoverScreen from "./Screens/RecoverScreen.js";
+
+const Stack = createStackNavigator();
+
+const config = {
+  animation: "timing",
+  config: {
+    duration: 300,
+    easing: Easing.linear,
+  },
+};
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          transitionSpec: {
+            open: config,
+            close: config,
+          },
+        }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="RecoverScreen"
+          component={RecoverScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+      <StatusBar />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
