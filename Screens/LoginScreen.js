@@ -43,7 +43,16 @@ export default function LoginScreen(props) {
       <Formik
         validationSchema={loginValidationSchema}
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          if (
+            values.email === "test1234@gmail.com" &&
+            values.password === "test1234"
+          ) {
+            props.navigation.replace("My Home");
+          } else {
+            console.log(values.email, values.password);
+          }
+        }}
       >
         {({
           handleChange,
