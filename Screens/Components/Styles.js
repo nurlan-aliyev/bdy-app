@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     color: "#212529",
   },
   signInPar: {
-    fontSize: 18,
+    fontSize: 16,
     color: "#646f79",
     marginBottom: 15,
     textAlign: "center",

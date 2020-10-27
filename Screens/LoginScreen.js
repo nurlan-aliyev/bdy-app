@@ -28,109 +28,105 @@ const loginValidationSchema = yup.object().shape({
     .required("Password is required"),
 });
 
-class LoginScreen extends React.Component {
-  render() {
-    return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "white",
-        }}
+export default function LoginScreen(props) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <Text style={styles.signInText}>Please Sign In</Text>
+      <Text style={styles.signInPar}>Sign in to manage your account.</Text>
+      <Formik
+        validationSchema={loginValidationSchema}
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(values) => console.log(values)}
       >
-        <Text style={styles.signInText}>Please Sign In</Text>
-        <Text style={styles.signInPar}>Sign in to manage your account.</Text>
-        <Formik
-          validationSchema={loginValidationSchema}
-          initialValues={{ email: "", password: "" }}
-          onSubmit={(values) => console.log(values)}
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          isValid,
+        }) => (
+          <>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <IconMaterial
+                name="email-outline"
+                size={30}
+                // color={!this.state.isFocusedEmail ? "#8F95A0" : "#000"}
+                style={{ marginRight: -6, marginLeft: -6 }}
+              />
+              <TextInput
+                name="email"
+                placeholder="Email Address"
+                style={styles.textField}
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+            </View>
+            {errors.email && (
+              <Text style={{ fontSize: 14, color: "red" }}>{errors.email}</Text>
+            )}
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <IconFont
+                name="lock"
+                size={30}
+                // color={!this.state.isFocusedPass ? "#8F95A0" : "#000"}
+              />
+              <TextInput
+                name="password"
+                placeholder="Password"
+                style={styles.textField}
+                onChangeText={handleChange("password")}
+                onBlur={handleBlur("password")}
+                value={values.password}
+                secureTextEntry
+                autoCapitalize="none"
+              />
+            </View>
+            {errors.password && (
+              <Text style={{ fontSize: 14, color: "red" }}>
+                {errors.password}
+              </Text>
+            )}
+            <TouchableOpacity
+              style={{
+                margin: 10,
+                left: deviceWidth - deviceWidth * 0.79,
+              }}
+              onPress={() => props.navigation.replace("RecoverScreen")}
+            >
+              <Text style={{ color: "#21C87A", fontSize: 14 }}>
+                Forgot Password?
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.succesBtn}
+              onPress={handleSubmit}
+              disabled={!isValid}
+            >
+              <Text style={styles.btnText}>Sign In</Text>
+            </TouchableOpacity>
+          </>
+        )}
+      </Formik>
+      <View style={{ flexDirection: "row", marginTop: 8 }}>
+        <Text style={styles.signInPar}>Do not have an account?</Text>
+        <TouchableOpacity
+          style={{ marginLeft: 8 }}
+          onPress={() => props.navigation.replace("RegisterScreen")}
         >
-          {({
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            values,
-            errors,
-            isValid,
-          }) => (
-            <>
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <IconMaterial
-                  name="email-outline"
-                  size={30}
-                  // color={!this.state.isFocusedEmail ? "#8F95A0" : "#000"}
-                  style={{ marginRight: -6, marginLeft: -6 }}
-                />
-                <TextInput
-                  name="email"
-                  placeholder="Email Address"
-                  style={styles.textField}
-                  onChangeText={handleChange("email")}
-                  onBlur={handleBlur("email")}
-                  value={values.email}
-                  keyboardType="email-address"
-                />
-              </View>
-              {errors.email && (
-                <Text style={{ fontSize: 10, color: "red" }}>
-                  {errors.email}
-                </Text>
-              )}
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <IconFont
-                  name="lock"
-                  size={30}
-                  // color={!this.state.isFocusedPass ? "#8F95A0" : "#000"}
-                />
-                <TextInput
-                  name="password"
-                  placeholder="Password"
-                  style={styles.textField}
-                  onChangeText={handleChange("password")}
-                  onBlur={handleBlur("password")}
-                  value={values.password}
-                  secureTextEntry
-                />
-              </View>
-              {errors.password && (
-                <Text style={{ fontSize: 10, color: "red" }}>
-                  {errors.password}
-                </Text>
-              )}
-              <TouchableOpacity
-                style={{
-                  margin: 10,
-                  left: deviceWidth - deviceWidth * 0.79,
-                }}
-                onPress={() => this.props.navigation.replace("RecoverScreen")}
-              >
-                <Text style={{ color: "#21C87A", fontSize: 14 }}>
-                  Forgot Password?
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.succesBtn}
-                onPress={handleSubmit}
-                disabled={!isValid}
-              >
-                <Text style={styles.btnText}>Sign In</Text>
-              </TouchableOpacity>
-            </>
-          )}
-        </Formik>
-        <View style={{ flexDirection: "row", marginTop: 8 }}>
-          <Text style={styles.signInPar}>Do not have an account?</Text>
-          <TouchableOpacity
-            style={{ marginLeft: 8 }}
-            onPress={() => this.props.navigation.replace("RegisterScreen")}
-          >
-            <Text style={{ color: "#21C87A", fontSize: 16 }}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
+          <Text style={{ color: "#21C87A", fontSize: 16 }}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
-    );
-  }
+    </View>
+  );
 }
-
-export default LoginScreen;
