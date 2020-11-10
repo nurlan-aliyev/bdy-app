@@ -44,6 +44,57 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "white",
   },
+  cardContainer: {
+    width: "45%",
+    backgroundColor: "white",
+    borderRadius: 5,
+    padding: 10,
+    margin: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.35,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  iconContainer: {
+    position: "relative",
+    left: 0,
+    margin: 5,
+  },
+  iconText: {
+    marginVertical: 8,
+    fontSize: 18,
+    fontWeight: "500",
+  },
+  powerContainer: {
+    flexDirection: "row",
+    position: "relative",
+    bottom: 5,
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+  onIndicatorContainer: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+  },
+  multiCardContainer: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignContent: "space-around",
+    backgroundColor: "white",
+  },
+  singleCardContainer: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignContent: "flex-start",
+    backgroundColor: "white",
+  },
 });
 
 export { styles };
