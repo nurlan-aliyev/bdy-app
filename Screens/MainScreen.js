@@ -16,6 +16,58 @@ import Card from "./Card.js";
 
 import { styles } from "./Components/Styles.js";
 
+const airConditionerScreen = (props) => {
+  return (
+    <View>
+      <Text>DeviceLabel</Text>
+      <Text>RoomName</Text>
+      <Text>TempReading</Text>
+      <Text>HumidityReading</Text>
+      <Text>TempReading</Text>
+      <Text>HumidityReading</Text>
+      <Text>SensorReadings</Text>
+      <Text>ConditionSetter</Text>
+      <Text>TempSetter</Text>
+      <Text>GeneralManagement</Text>
+    </View>
+  );
+};
+const ceilingLightScreen = (props) => {
+  return (
+    <View>
+      <Text>DeviceLabel</Text>
+      <Text>RoomName</Text>
+      <Text>GeneralManagement</Text>
+    </View>
+  );
+};
+const televisionScreen = (props) => {
+  return (
+    <View>
+      <Text>DeviceLabel</Text>
+      <Text>RoomName</Text>
+      <Text>GeneralManagement</Text>
+    </View>
+  );
+};
+const speakerScreen = (props) => {
+  return (
+    <View>
+      <Text>DeviceLabel</Text>
+      <Text>RoomName</Text>
+      <Text>GeneralManagement</Text>
+    </View>
+  );
+};
+const deskLampScreen = (props) => {
+  return (
+    <View>
+      <Text>DeviceLabel</Text>
+      <Text>RoomName</Text>
+      <Text>GeneralManagement</Text>
+    </View>
+  );
+};
 const OtherScreen = (props) => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -24,7 +76,7 @@ const OtherScreen = (props) => {
   );
 };
 
-const LivingRoomTab = () => {
+const LivingRoomTab = (props) => {
   return (
     <ScrollView
       style={{ backgroundColor: "white" }}
