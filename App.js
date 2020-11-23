@@ -14,7 +14,7 @@ import RecoverScreen from "./Screens/RecoverScreen.js";
 
 import IconMaterial from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { TabNav } from "./Screens/Example.js";
+import { TabNav } from "./Screens/MainScreen.js";
 
 const Stack = createStackNavigator();
 

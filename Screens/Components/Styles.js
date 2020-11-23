@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     color: "white",
   },
   cardContainer: {
-    width: "45%",
+    width: deviceWidth / 2 - deviceWidth * 0.11,
+    flex: 1,
     backgroundColor: "white",
     borderRadius: 5,
     padding: 10,
@@ -83,17 +84,19 @@ const styles = StyleSheet.create({
   },
   multiCardContainer: {
     flex: 1,
-    flexDirection: "row",
     flexWrap: "wrap",
-    alignContent: "space-around",
+    flexDirection: "row",
     backgroundColor: "white",
   },
   singleCardContainer: {
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    alignContent: "flex-start",
+    alignItems: "flex-start",
     backgroundColor: "white",
+  },
+  testContainer: {
+    height: 175,
   },
 });
 

@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, View, TouchableOpacity, Dimensions } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -20,14 +26,36 @@ const OtherScreen = (props) => {
 
 const LivingRoomTab = () => {
   return (
-    <View style={styles.multiCardContainer}>
-      <Card icon="air-conditioner" title="Air Conditioner" />
-      <Card icon="ceiling-light" title="Ceiling Lamp" />
-      <Card icon="television" title="Television" />
-      <Card icon="speaker" title="Speaker" />
-      <Card icon="desk-lamp" title="Desk Lamp" />
-      <Card icon="plus-circle-outline" title="Add Accessories" />
-    </View>
+    <ScrollView
+      style={{ backgroundColor: "white" }}
+      contentContainerStyle={{
+        flexGrow: 1,
+        flexDirection: "row",
+        flexWrap: "wrap",
+        paddingHorizontal: 10,
+        marginHorizontal: 10,
+        justifyContent: "space-evenly",
+      }}
+    >
+      <View style={styles.testContainer}>
+        <Card icon="air-conditioner" title="Air Conditioner" />
+      </View>
+      <View style={styles.testContainer}>
+        <Card icon="ceiling-light" title="Ceiling Lamp" />
+      </View>
+      <View style={styles.testContainer}>
+        <Card icon="television" title="Television" />
+      </View>
+      <View style={styles.testContainer}>
+        <Card icon="speaker" title="Speaker" />
+      </View>
+      <View style={styles.testContainer}>
+        <Card icon="desk-lamp" title="Desk Lamp" />
+      </View>
+      <View style={styles.testContainer}>
+        <Card icon="plus-circle-outline" title="Add Accessories" />
+      </View>
+    </ScrollView>
   );
 };
 
